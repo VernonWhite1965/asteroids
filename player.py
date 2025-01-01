@@ -1,9 +1,11 @@
 # Player class and parameters
 # import pygame, constants data, and circleshape
 
-import pygame
-from constants import *
-from circleshape import CircleShape
+import pygame					# import pygame
+from constants import *				# import all from constants.py
+from circleshape import CircleShape		# import CircleShape from circleshape.py
+from shot import Shot				# import Shot from shot.py
+
 
 # define class for player and pass circleshape parameters
 class Player(CircleShape):
@@ -36,14 +38,16 @@ class Player(CircleShape):
 	def update(self, dt):
 		keys = pygame.key.get_pressed()
 
-		if keys[pygame.K_a]:	# rotate left
+		if keys[pygame.K_a]:		# rotate left
 			self.rotate(-dt)
-		if keys[pygame.K_d]:	# rotate right
+		if keys[pygame.K_d]:		# rotate right
 			self.rotate(dt)
-		if keys[pygame.K_w]:	# move up
+		if keys[pygame.K_w]:		# move up
 			self.move(dt)
-		if keys[pygame.K_s]:	# move down
+		if keys[pygame.K_s]:		# move down
 			self.move(-dt)
+		if keys[pygame.K_SPACE]:	# player shoots
+			self.shoot()
 
 
 	# player position
@@ -51,3 +55,8 @@ class Player(CircleShape):
 		forward = pygame.Vector2(0, 1).rotate(self.rotation)
 		self.position += forward * PLAYER_SPEED * dt
 
+
+	# player shoots
+	def shoot(self):
+		shot = Shot(self.position.x, self.position.y)
+		shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
