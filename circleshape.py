@@ -1,3 +1,4 @@
+# import pygame
 import pygame
 
 # Base class for game objects

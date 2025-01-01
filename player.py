@@ -24,3 +24,17 @@ class Player(CircleShape):
 		b = self.position - forward * self.radius - right
 		c = self.position - forward * self.radius + right
 		return [a, b, c]
+
+	# rotate player
+	def rotate(self):
+		self.rotation += PLAYER_TURN_SPEED * dt
+
+
+	# update player potion and rotation
+	def update(self, dt):
+		keys = pygame.key.get_pressed()
+
+		if keys[pygame.K_a]:	# rotate left
+			self.rotate(-dt)
+		if keys[pygame.K_d]:	# rotate right
+			self.rotate(dt)
