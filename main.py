@@ -4,36 +4,41 @@
 import pygame
 from constants import *
 
-
+'''
 def start_pygame(self):
-""" Initialize pygame system stuff and draw empty window """
-    if not pygame.display.get_init():
-        pygame.display.init()
-    if not pygame.font.get_init():
-        pygame.font.init()
+	pygame.init()
+	""" Initialize pygame system stuff and draw empty window """
+	if not pygame.display.get_init():
+		pygame.display.init()
+	if not pygame.font.get_init():
+		pygame.font.init()
 
 def game_loop(self):
-    While True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return
+	while True:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				return
+		screen = pygame.display.set_mode((SCEEN_WIDHR, SCREEN_HEIGHT))
+		screen.fill("black")
+		pygame.display.flip()
 
-        screen = pygame.display.set_mode((SCEEN_WIDHR, SCREEN_HEIGHT))
-	pygame.display.flip()
-
-
+'''
 
 def main():
-    start_pygame()
-    print("Starting asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
-    #screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    #pygame.display.flip()
-    game_loop()
+	pygame.init()
+	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+	print("Starting asteroids!")
+	print(f"Screen width: {SCREEN_WIDTH}")
+	print(f"Screen height: {SCREEN_HEIGHT}")
+	
+	while True:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				return
+		screen.fill("black")
+		pygame.display.flip()
 
 
 
 if __name__ == "__main__":
-    main()
-
+	main()
